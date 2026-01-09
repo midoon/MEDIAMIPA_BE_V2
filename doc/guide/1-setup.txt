@@ -1,0 +1,6 @@
+bun create hono@latest my-app
+
+cd my-app
+bun install
+
+bun add hono

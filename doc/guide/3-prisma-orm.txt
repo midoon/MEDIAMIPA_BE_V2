@@ -1,0 +1,9 @@
+bunx --bun prisma init --datasource-provider mysql
+
+-------------
+buat struktur tabel pada format prisma
+-------------
+
+ bunx --bun prisma migrate dev --name init
+
+ bunx --bun prisma generate
