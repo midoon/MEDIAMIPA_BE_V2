@@ -6,6 +6,9 @@ import { logger } from "./logger";
 const adapter = new PrismaMariaDb({
   host: env.DB_HOST,
   port: Number(env.DB_PORT),
+  user: env.DB_USER,
+  password: env.DB_PASSWORD,
+  database: env.DB_NAME,
   connectionLimit: 5,
 });
 
@@ -45,4 +48,8 @@ prismaClient.$on("info", (e) => {
 
 prismaClient.$on("warn", (e) => {
   logger.warn(e);
+});
+
+process.on("beforeExit", async () => {
+  await prismaClient.$disconnect();
 });
